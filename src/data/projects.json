@@ -1,0 +1,59 @@
+[
+    {
+        "id": "1",
+        "title": "GiftyGen - Subscription Platform",
+        "slug": "giftygen",
+        "description": "End-to-end subscription management system with Razorpay payment integration handling recurring payments and automated billing for live paying customers.",
+        "longDescription": "Built a complete MERN subscription management system with Razorpay payment integration, automated WhatsApp notifications for gift-card delivery, payment confirmations, and expiry alerts. Managed real-time subscription tracking with renewal detection and status indicators.",
+        "stack": [
+            "React",
+            "Node.js",
+            "MongoDB",
+            "Express",
+            "Razorpay API",
+            "WhatsApp API"
+        ],
+        "features": [
+            "Recurring payments",
+            "Automated notifications",
+            "Real-time tracking",
+            "Admin dashboard"
+        ],
+        "image": "/projects/giftygen_logo.png",
+        "githubUrl": "https://github.com/HibareGiriraj",
+        "liveUrl": "",
+        "published": true,
+        "techStack": [
+            "MongoDB",
+            "React",
+            "Express",
+            "Nodejs"
+        ],
+        "githubLink": "#",
+        "liveLink": "#"
+    },
+    {
+        "id": "2",
+        "title": "STUDIESHQ - Educational Platform",
+        "slug": "studieshq",
+        "description": "Enhanced mobile responsiveness across 15+ pages of educational platform, achieving consistent cross-device experience and reducing layout bugs by 80%.",
+        "longDescription": "Improved mobile responsiveness across multiple pages, implemented breakpoints and media queries for consistent cross-device performance. Enhanced UI stability and accessibility with layout adjustments aligned to design standards.",
+        "stack": [
+            "React",
+            "Node.js",
+            "MongoDB",
+            "Express",
+            "Responsive Design"
+        ],
+        "features": [
+            "Mobile-first design",
+            "Cross-device compatibility",
+            "Accessibility compliance",
+            "Pixel-perfect UI"
+        ],
+        "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop",
+        "githubUrl": "",
+        "liveUrl": "",
+        "published": true
+    }
+]

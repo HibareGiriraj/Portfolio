@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Giriraj Hibare - Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 16, featuring a stunning dark theme with glassmorphism effects, animations, and a complete admin dashboard.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=flat-square&logo=mongodb)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=flat-square&logo=tailwind-css)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Modern UI/UX** - Dark theme with gradient accents, glassmorphism, and smooth animations
+- **Responsive Design** - Optimized for all screen sizes
+- **Dynamic Projects** - MongoDB-powered project showcase with CRUD operations
+- **Contact Form** - Functional contact form with database storage
+- **Admin Dashboard** - Secure admin panel to manage projects and view messages
+- **SEO Optimized** - Full SEO setup with sitemap, robots.txt, and Open Graph tags
+- **Authentication** - NextAuth.js protected admin routes
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Database:** MongoDB with Mongoose
+- **Styling:** Tailwind CSS v4
+- **Authentication:** NextAuth.js
+- **Animations:** Framer Motion
+- **Icons:** React Icons
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- MongoDB database (local or Atlas)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/girirajh/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` with your values:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your_secret_key
+   ADMIN_USER=admin
+   ADMIN_PASSWORD=your_secure_password
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open** [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── public/
+│   └── resume/                 # Place your resume PDF here
+├── src/
+│   ├── app/
+│   │   ├── (admin)/dashboard/  # Admin dashboard routes
+│   │   ├── api/                # API routes
+│   │   │   ├── auth/           # NextAuth routes
+│   │   │   ├── contact/        # Contact form API
+│   │   │   └── projects/       # Projects CRUD API
+│   │   ├── auth/               # Auth pages
+│   │   ├── layout.js           # Root layout with SEO
+│   │   ├── page.js             # Homepage
+│   │   ├── sitemap.js          # Dynamic sitemap
+│   │   └── robots.js           # Robots.txt config
+│   ├── components/
+│   │   ├── AdminPanel.js       # Add project form
+│   │   ├── Contact.js          # Contact section
+│   │   ├── Footer.js           # Footer section
+│   │   ├── Hero.js             # Hero section
+│   │   ├── MessagesManager.js  # Admin messages view
+│   │   ├── Navbar.js           # Navigation bar
+│   │   ├── ProjectCard.js      # Project card component
+│   │   ├── Projects.js         # Projects section
+│   │   ├── ProjectsManager.js  # Admin projects CRUD
+│   │   └── TechStack.js        # Skills section
+│   ├── lib/
+│   │   └── mongodb.js          # Database connection
+│   └── models/
+│       ├── Contact.js          # Contact form model
+│       └── Project.js          # Project model
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Admin Access
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Navigate to `/auth/signin`
+2. Login with your admin credentials (set in `.env`)
+3. Access the dashboard at `/dashboard`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Admin Features
+- **Add Projects:** `/dashboard`
+- **Manage Projects:** `/dashboard/projects` (Edit/Delete)
+- **View Messages:** `/dashboard/messages`
 
-## Learn More
+## 📌 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Update Personal Info
+Update your information in these files:
+- `src/components/Hero.js` - Name, tagline, social links
+- `src/components/Contact.js` - Email, location, social links
+- `src/components/Footer.js` - Social links
+- `src/app/layout.js` - SEO metadata
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Add Your Resume
+Place your resume PDF at:
+```
+public/resume/Giriraj_Hibare_Resume.pdf
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Social Links
+Update the social media URLs in the components to your actual profiles.
 
-## Deploy on Vercel
+## 🌐 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercel (Recommended)
+1. Push to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Other Platforms
+```bash
+npm run build
+npm start
+```
+
+## 📄 Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `MONGODB_URI` | MongoDB connection string | ✅ |
+| `NEXTAUTH_URL` | Your site URL | ✅ |
+| `NEXTAUTH_SECRET` | Auth secret key | ✅ |
+| `ADMIN_USER` | Admin username | ✅ |
+| `ADMIN_PASSWORD` | Admin password | ✅ |
+| `NEXT_PUBLIC_SITE_URL` | Production URL for SEO | ⚠️ |
+
+## 📝 License
+
+MIT License - feel free to use this for your own portfolio!
+
+---
+
+Built with ❤️ by **Giriraj Hibare**
