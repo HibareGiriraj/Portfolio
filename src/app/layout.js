@@ -1,6 +1,7 @@
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import { PersonSchema, WebsiteSchema } from "@/components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,10 @@ export const metadata = {
     "Portfolio",
     "Giriraj Hibare",
     "Freelance Developer",
-    "India"
+    "India",
+    "Pune Developer",
+    "Payment Integration",
+    "Razorpay Developer"
   ],
   authors: [{ name: "Giriraj Hibare", url: "https://girirajhibare.dev" }],
   creator: "Giriraj Hibare",
@@ -81,6 +85,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
       <body className={`${inter.className} antialiased`}>
+        <PersonSchema />
+        <WebsiteSchema />
         <Providers>
           {children}
         </Providers>
@@ -88,3 +94,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

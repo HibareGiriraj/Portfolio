@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* ===== Design Tokens - Cyan/Blue Theme ===== */
-:root {
+/* ===== Design Tokens - Dark Theme (Default) ===== */
+:root,
+[data-theme="dark"] {
   --color-bg: #0f172a;
   --color-bg-secondary: #1e293b;
   --color-surface: rgba(30, 41, 59, 0.5);
@@ -20,6 +21,155 @@
   --radius: 0.5rem;
   --radius-lg: 1rem;
   --transition: 300ms ease;
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-secondary: #e2e8f0;
+  --color-surface: rgba(255, 255, 255, 0.8);
+  --color-border: #cbd5e1;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-secondary: #64748b;
+
+  /* Keep cyan/blue accent for both themes */
+  --color-primary: #0891b2;
+  --color-primary-light: #06b6d4;
+  --color-secondary: #2563eb;
+  --gradient-primary: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+  --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%);
+}
+
+/* ===== Light Mode Tailwind Overrides ===== */
+[data-theme="light"] {
+
+  /* Fix white text on light backgrounds */
+  .text-white {
+    color: var(--color-text) !important;
+  }
+
+  .text-slate-300,
+  .text-slate-400 {
+    color: var(--color-text-muted) !important;
+  }
+
+  .text-slate-500,
+  .text-slate-600 {
+    color: var(--color-text-secondary) !important;
+  }
+
+  /* Fix backgrounds */
+  .bg-black,
+  .bg-slate-900,
+  .bg-slate-950 {
+    background-color: var(--color-bg) !important;
+  }
+
+  .bg-slate-800 {
+    background-color: var(--color-bg-secondary) !important;
+  }
+
+  /* Fix borders */
+  .border-slate-700,
+  .border-slate-800 {
+    border-color: var(--color-border) !important;
+  }
+
+  /* Fix glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: var(--color-border) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Fix skill cards & icons */
+  .skill-card {
+    background: white !important;
+    border-color: var(--color-border) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .skill-card svg {
+    color: var(--color-primary) !important;
+  }
+
+  /* Fix section backgrounds */
+  .bg-slate-800\/30 {
+    background: rgba(241, 245, 249, 0.8) !important;
+  }
+
+  /* Fix cards */
+  .card {
+    background: white !important;
+    border-color: var(--color-border) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Fix social icons */
+  .social-icon {
+    background: white !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  /* Fix tags */
+  .tag {
+    background: rgba(8, 145, 178, 0.1) !important;
+    border-color: rgba(8, 145, 178, 0.3) !important;
+    color: var(--color-primary) !important;
+  }
+
+  /* Fix buttons */
+  .btn-secondary {
+    border-color: var(--color-border) !important;
+    color: var(--color-text) !important;
+  }
+
+  .btn-primary {
+    box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3) !important;
+  }
+
+  /* Fix inputs */
+  input,
+  textarea {
+    background: white !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-text) !important;
+  }
+
+  /* Fix blobs - make them more subtle in light mode */
+  .blob {
+    opacity: 0.2 !important;
+  }
+
+  /* Fix gradient text for better visibility */
+  .gradient-text {
+    background: linear-gradient(135deg, #0891b2 0%, #2563eb 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+  }
+
+  /* Fix section title */
+  .section-title {
+    color: var(--color-text) !important;
+  }
+
+  /* Fix highlight arrow */
+  .text-cyan-400 {
+    color: var(--color-primary) !important;
+  }
+
+  /* Fix bg-slate-700/50 used in skill tags */
+  .bg-slate-700\/50 {
+    background: rgba(226, 232, 240, 0.8) !important;
+  }
 }
 
 /* ===== Base Styles ===== */
