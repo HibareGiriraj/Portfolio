@@ -61,12 +61,28 @@ export default function MessagesManager() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Messages List */}
             <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white">Inbox ({messages.length})</h3>
+                <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-white">Inbox ({messages.length})</h3>
+                    <button
+                        onClick={fetchMessages}
+                        className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors px-2 py-1"
+                        aria-label="Refresh messages"
+                    >
+                        Refresh
+                    </button>
+                </div>
+
+                <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-3 mb-4">
+                    <p className="text-xs text-cyan-400">
+                        <strong>Note:</strong> In production, new messages are sent via email. Check your inbox for the latest submissions.
+                    </p>
+                </div>
 
                 {messages.length === 0 ? (
                     <div className="text-center py-12 text-slate-400 bg-slate-800 rounded-lg">
                         <FaEnvelope className="text-4xl mx-auto mb-4 opacity-50" />
-                        <p>No messages yet</p>
+                        <p>No messages in file storage</p>
+                        <p className="text-xs text-slate-500 mt-2">New messages are sent via email in production</p>
                     </div>
                 ) : (
                     <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2">

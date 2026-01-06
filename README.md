@@ -54,6 +54,11 @@ A modern, responsive portfolio website built with Next.js 16, featuring a stunni
    ADMIN_USER=admin
    ADMIN_PASSWORD=your_secure_password
    NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   
+   # Email Service (Resend) - Required for contact form
+   RESEND_API_KEY=re_your_resend_api_key
+   CONTACT_EMAIL=your-email@example.com
+   FROM_EMAIL=noreply@yourdomain.com
    ```
 
 4. **Run the development server**
@@ -152,6 +157,30 @@ npm start
 | `ADMIN_USER` | Admin username | ✅ |
 | `ADMIN_PASSWORD` | Admin password | ✅ |
 | `NEXT_PUBLIC_SITE_URL` | Production URL for SEO | ⚠️ |
+| `RESEND_API_KEY` | Resend API key for email service | ✅ |
+| `CONTACT_EMAIL` | Email to receive contact form submissions | ✅ |
+| `FROM_EMAIL` | Email address to send from (must be verified in Resend) | ⚠️ |
+| `MONGODB_URI` | MongoDB connection string | ✅ |
+| `MONGODB_DB` | MongoDB database name (defaults to `portfolio`) | ⚠️ |
+
+## 📧 Email Service Setup
+
+The contact form uses [Resend](https://resend.com) for sending emails. To set it up:
+
+1. **Sign up for Resend** at https://resend.com
+2. **Get your API key** from the Resend dashboard
+3. **Verify your domain** (or use `onboarding@resend.dev` for testing)
+4. **Add environment variables:**
+   ```env
+   RESEND_API_KEY=re_your_api_key_here
+   CONTACT_EMAIL=your-email@example.com
+   FROM_EMAIL=noreply@yourdomain.com
+   ```
+
+The contact form will:
+- Send you an email notification when someone submits the form
+- Send an auto-reply confirmation to the sender
+- Work in both development and production environments
 
 ## 📝 License
 

@@ -11,7 +11,7 @@ export async function DELETE(request, { params }) {
         }
 
         const { id } = await params;
-        const deleted = deleteContact(id);
+        const deleted = await deleteContact(id);
 
         if (!deleted) {
             return Response.json(
@@ -41,7 +41,7 @@ export async function PATCH(request, { params }) {
         const { id } = await params;
         const body = await request.json();
 
-        const contact = updateContact(id, { read: body.read });
+        const contact = await updateContact(id, { read: body.read });
 
         if (!contact) {
             return Response.json(
