@@ -63,13 +63,29 @@ export default function Experience() {
                                 </div>
                             </div>
 
-                            <ul className="space-y-4">
-                                {exp.highlights.map((highlight, j) => (
-                                    <li key={j} className="text-slate-300 flex items-start gap-4 text-base leading-relaxed">
-                                        <span className="text-cyan-400 mt-1.5 font-bold" aria-hidden="true">▹</span>
-                                        <span>{highlight}</span>
-                                    </li>
-                                ))}
+                            <ul className="space-y-3">
+                                {exp.highlights.map((highlight, j) => {
+                                    // Extract numbers and bold outcomes
+                                    const hasNumber = /\d+/.test(highlight);
+                                    const parts = highlight.split(/(\d+\+?)/);
+                                    
+                                    return (
+                                        <li key={j} className="text-slate-300 flex items-start gap-3 text-sm md:text-base leading-relaxed">
+                                            <span className="text-cyan-400 mt-1.5 font-bold text-lg" aria-hidden="true">▸</span>
+                                            <span>
+                                                {parts.map((part, idx) => {
+                                                    if (/\d+\+?/.test(part)) {
+                                                        return <strong key={idx} className="text-cyan-400 font-bold">{part}</strong>;
+                                                    }
+                                                    if (part.toLowerCase().includes('zero') || part.toLowerCase().includes('80%')) {
+                                                        return <strong key={idx} className="text-white font-semibold">{part}</strong>;
+                                                    }
+                                                    return <span key={idx}>{part}</span>;
+                                                })}
+                                            </span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     ))}

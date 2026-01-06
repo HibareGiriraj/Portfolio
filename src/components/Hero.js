@@ -72,24 +72,6 @@ export default function Hero() {
                             </li>
                         </ul>
                     </div>
-
-                    <div className="glass-card p-6 rounded-xl">
-                        <h3 className="text-white font-semibold mb-4 text-left">Tooling & Practices</h3>
-                        <ul className="space-y-2 text-left text-slate-300 text-sm">
-                            <li className="flex items-start gap-2">
-                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
-                                <span><strong className="text-white">State Management:</strong> React Context, Custom Hooks</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
-                                <span><strong className="text-white">Testing:</strong> Manual testing, production debugging</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
-                                <span><strong className="text-white">CI/CD:</strong> Git workflows, deployment pipelines</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
 
                 {/* Separated CTAs */}

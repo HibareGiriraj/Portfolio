@@ -89,7 +89,7 @@ export default function Contact() {
                                 <div>
                                     <p className="text-slate-500 text-sm">Location</p>
                                     <p className="font-medium">Pune, Maharashtra</p>
-                                    <p className="text-slate-500 text-xs mt-1">Open to Remote</p>
+                                    <p className="text-slate-500 text-xs mt-1">Open to Onsite or Hybrid roles in India</p>
                                 </div>
                             </div>
                         </div>

@@ -20,31 +20,77 @@ export default function About() {
                             </div>
                         </div>
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Giriraj Hibare</h3>
-                        <p className="text-lg text-slate-400">Full-Stack Engineer (MERN + TypeScript)</p>
+                        <p className="text-lg text-slate-400">Full-Stack Engineer (MERN Stack)</p>
                     </div>
 
-                    {/* About Content */}
-                    <div className="space-y-6 text-slate-300 leading-relaxed">
-                        <p className="text-base md:text-lg">
-                            <strong className="text-white">I build production systems and solve real problems</strong> when complexity gets in the way. 
-                            I specialize in payment integrations, real-time features, and scalable MERN applications that ship to real customers.
-                        </p>
+                    {/* Bold Outcomes First */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">500+</div>
+                            <div className="text-xs text-slate-400">Active Users</div>
+                        </div>
+                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">20+</div>
+                            <div className="text-xs text-slate-400">Bugs Fixed</div>
+                        </div>
+                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">2+</div>
+                            <div className="text-xs text-slate-400">Production Apps</div>
+                        </div>
+                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">0</div>
+                            <div className="text-xs text-slate-400">Critical Incidents</div>
+                        </div>
+                    </div>
 
-                        <p className="text-base md:text-lg">
-                            <strong className="text-white">I ship features fast and iterate quickly.</strong> Leveraging React, Node.js, MongoDB, 
-                            payment APIs (Razorpay), and modern tooling. Small PRs, rapid feedback, production-focused development.
-                        </p>
+                    {/* Key Outcomes as Bullets */}
+                    <div className="mb-8">
+                        <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-4">Key Outcomes</h4>
+                        <ul className="space-y-3 text-slate-300 text-sm">
+                            <li className="flex items-start gap-3">
+                                <span className="text-cyan-400 mt-1 font-bold text-lg" aria-hidden="true">▸</span>
+                                <div>
+                                    <strong className="text-white">Built payment systems</strong> handling recurring transactions for <strong className="text-cyan-400">500+ active users</strong>
+                                </div>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <span className="text-cyan-400 mt-1 font-bold text-lg" aria-hidden="true">▸</span>
+                                <div>
+                                    <strong className="text-white">Fixed 20+ production bugs</strong> with <strong className="text-cyan-400">zero critical incidents</strong> post-fix
+                                </div>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <span className="text-cyan-400 mt-1 font-bold text-lg" aria-hidden="true">▸</span>
+                                <div>
+                                    <strong className="text-white">Shipped revenue-critical features</strong> supporting business operations and monthly recurring revenue workflows
+                                </div>
+                            </li>
+                            <li className="flex items-start gap-3">
+                                <span className="text-cyan-400 mt-1 font-bold text-lg" aria-hidden="true">▸</span>
+                                <div>
+                                    Currently at <span className="text-cyan-400 font-medium">Aii Venture Pvt. Ltd.</span> building subscription management systems
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <p className="text-base md:text-lg">
-                            <strong className="text-white">My core philosophy is simplicity.</strong> If complexity balloons, I delete it and design 
-                            the simpler path. I focus on building features that users actually need, not over-engineering solutions.
-                        </p>
-
-                        <p className="text-base md:text-lg">
-                            Currently working at <span className="text-cyan-400 font-medium">Aii Venture Pvt. Ltd.</span> building subscription 
-                            management systems handling recurring payments for 500+ active users. Fixed 20+ production bugs with zero critical 
-                            incidents, and shipped revenue-critical features supporting business operations.
-                        </p>
+                    {/* Philosophy - Concise */}
+                    <div className="border-t border-slate-700 pt-6">
+                        <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-3">Philosophy</h4>
+                        <ul className="space-y-2 text-slate-300 text-sm">
+                            <li className="flex items-start gap-2">
+                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                <span><strong className="text-white">Ship fast, iterate quickly</strong> — Small PRs, rapid feedback, production-focused</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                <span><strong className="text-white">Simplicity over complexity</strong> — Delete complexity, design simpler paths</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                <span><strong className="text-white">Build for real users</strong> — Not abstractions or over-engineering</span>
+                            </li>
+                        </ul>
                     </div>
 
                     {/* Key Highlights */}

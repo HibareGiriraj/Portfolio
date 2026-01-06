@@ -42,33 +42,46 @@ export default function Projects() {
                                         </h3>
                                     </div>
 
-                                    {/* Description - Bullets Instead of Paragraphs */}
+                                    {/* Impact Metrics First - Bold Outcomes */}
+                                    {project.impact && project.impact.length > 0 && (
+                                        <div className="mb-6">
+                                            <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">Impact Metrics</h4>
+                                            <ul className="space-y-2 mb-4">
+                                                {project.impact.map((metric, idx) => {
+                                                    // Extract and bold numbers
+                                                    const parts = metric.split(/(\d+\+?|80%|Zero)/);
+                                                    return (
+                                                        <li key={idx} className="text-slate-300 text-sm flex items-start gap-2">
+                                                            <span className="text-cyan-400 mt-1 font-bold" aria-hidden="true">▸</span>
+                                                            <span>
+                                                                {parts.map((part, i) => {
+                                                                    if (/\d+\+?|80%|Zero/i.test(part)) {
+                                                                        return <strong key={i} className="text-cyan-400 font-bold">{part}</strong>;
+                                                                    }
+                                                                    return <span key={i}>{part}</span>;
+                                                                })}
+                                                            </span>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {/* Description - Concise Bullets */}
                                     <div className="mb-6">
-                                        <ul className="space-y-2 mb-4">
+                                        <ul className="space-y-2">
                                             <li className="text-slate-300 text-sm flex items-start gap-2">
-                                                <span className="text-cyan-400 mt-1 font-bold" aria-hidden="true">▸</span>
+                                                <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
                                                 <span>{project.description}</span>
                                             </li>
                                             {project.longDescription && (
                                                 <li className="text-slate-300 text-sm flex items-start gap-2">
-                                                    <span className="text-cyan-400 mt-1 font-bold" aria-hidden="true">▸</span>
+                                                    <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
                                                     <span>{project.longDescription}</span>
                                                 </li>
                                             )}
                                         </ul>
-                                        {project.impact && project.impact.length > 0 && (
-                                            <div className="border-t border-slate-700 pt-4">
-                                                <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">Impact Metrics</h4>
-                                                <ul className="space-y-2">
-                                                    {project.impact.map((metric, idx) => (
-                                                        <li key={idx} className="text-slate-300 text-sm flex items-start gap-2">
-                                                            <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
-                                                            <span><strong className="text-white">{metric.split(':')[0]}</strong>{metric.includes(':') ? ': ' + metric.split(':').slice(1).join(':') : ''}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
                                     </div>
 
                                     {/* Tech Stack */}
