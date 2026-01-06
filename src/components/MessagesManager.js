@@ -29,8 +29,8 @@ export default function MessagesManager() {
         try {
             const res = await fetch(`/api/contact/${id}`, { method: 'DELETE' });
             if (res.ok) {
-                setMessages(messages.filter(m => m._id !== id));
-                if (selectedMessage?._id === id) {
+                setMessages(messages.filter(m => m.id !== id));
+                if (selectedMessage?.id === id) {
                     setSelectedMessage(null);
                 }
             }
@@ -72,9 +72,9 @@ export default function MessagesManager() {
                     <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2">
                         {messages.map((message) => (
                             <div
-                                key={message._id}
+                                key={message.id}
                                 onClick={() => setSelectedMessage(message)}
-                                className={`bg-slate-800 border rounded-lg p-4 cursor-pointer transition-all duration-200 ${selectedMessage?._id === message._id
+                                className={`bg-slate-800 border rounded-lg p-4 cursor-pointer transition-all duration-200 ${selectedMessage?.id === message.id
                                         ? 'border-cyan-500 ring-1 ring-cyan-500/50'
                                         : 'border-slate-700 hover:border-slate-600'
                                     } ${!message.read ? 'border-l-4 border-l-cyan-500' : ''}`}
@@ -114,7 +114,7 @@ export default function MessagesManager() {
                             </div>
                             <div className="flex gap-2">
                                 <button
-                                    onClick={() => handleDelete(selectedMessage._id)}
+                                    onClick={() => handleDelete(selectedMessage.id)}
                                     className="p-2 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-colors"
                                     title="Delete message"
                                 >

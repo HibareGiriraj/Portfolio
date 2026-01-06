@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "name": "Ambar Hibare",
+        "email": "ambar.hibare@gmail.com",
+        "subject": "",
+        "message": "I want to notify you that we have opening role regarding your profile.",
+        "id": "1",
+        "read": false,
+        "createdAt": "2026-01-05T07:23:58.923Z"
+    }
+]

@@ -31,15 +31,20 @@ const experience = [
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
-            <div className="max-w-4xl mx-auto">
-                <h2 className="section-title">Work Experience</h2>
+        <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+            <div className="max-w-5xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="section-title mb-4">Work Experience</h2>
+                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                        Building production applications and solving real-world problems
+                    </p>
+                </div>
 
                 <div className="space-y-8">
                     {experience.map((exp, i) => (
                         <div
                             key={i}
-                            className="glass-card p-8"
+                            className="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300"
                         >
                             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                                 <div>
@@ -48,20 +53,20 @@ export default function Experience() {
                                 </div>
                                 <div className="text-slate-400 mt-2 md:mt-0 md:text-right">
                                     <div className="flex items-center gap-2 md:justify-end">
-                                        <HiBriefcase size={16} />
-                                        {exp.period}
+                                        <HiBriefcase size={16} aria-hidden="true" />
+                                        <span>{exp.period}</span>
                                     </div>
                                     <div className="flex items-center gap-2 md:justify-end text-sm">
-                                        <HiLocationMarker size={14} />
-                                        {exp.location}
+                                        <HiLocationMarker size={14} aria-hidden="true" />
+                                        <span>{exp.location}</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <ul className="space-y-3">
+                            <ul className="space-y-4">
                                 {exp.highlights.map((highlight, j) => (
-                                    <li key={j} className="text-slate-300 flex items-start gap-3">
-                                        <span className="text-cyan-400 mt-1">▹</span>
+                                    <li key={j} className="text-slate-300 flex items-start gap-4 text-base leading-relaxed">
+                                        <span className="text-cyan-400 mt-1.5 font-bold" aria-hidden="true">▹</span>
                                         <span>{highlight}</span>
                                     </li>
                                 ))}

@@ -48,7 +48,7 @@ export function WebsiteSchema() {
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: "Giriraj Hibare Portfolio",
-        url: "https://girirajhibare.dev",
+        url: "https://girirajhibare.com",
         description: "Full-Stack MERN Developer portfolio showcasing production-ready web applications",
         author: {
             "@type": "Person",

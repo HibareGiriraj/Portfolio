@@ -1,6 +1,6 @@
+import { deleteContact, updateContact, getContactById } from '@/lib/contacts';
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../auth/[...nextauth]/route";
-import { getContactById, updateContact, deleteContact } from '@/lib/contacts';
 
 // DELETE contact message
 export async function DELETE(request, { params }) {
@@ -11,7 +11,6 @@ export async function DELETE(request, { params }) {
         }
 
         const { id } = await params;
-
         const deleted = deleteContact(id);
 
         if (!deleted) {

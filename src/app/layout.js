@@ -5,12 +5,17 @@ import { PersonSchema, WebsiteSchema } from "@/components/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
 });
 
+// Only load JetBrains Mono if actually used
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains"
+  variable: "--font-jetbrains",
+  display: "swap",
+  preload: false, // Only preload if used
 });
 
 export const metadata = {
@@ -78,6 +83,13 @@ export const metadata = {
     // Add your verification codes here when you have them
     // google: "your-google-verification-code",
     // yandex: "your-yandex-verification-code",
+  },
+  icons: {
+    icon: [
+      { url: '/giriraj_logo.png', type: 'image/png' },
+    ],
+    shortcut: '/giriraj_logo.png',
+    apple: '/giriraj_logo.png',
   },
 };
 

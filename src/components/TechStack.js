@@ -31,9 +31,9 @@ const familiarSkills = [
 
 function SkillCard({ skill }) {
     return (
-        <div className="skill-card bg-slate-950 border border-slate-800 rounded-lg p-5 flex flex-col items-center justify-center gap-3 cursor-default">
-            <skill.icon className="text-3xl text-slate-400 transition-all duration-300" />
-            <span className="text-slate-500 text-sm font-medium">
+        <div className="skill-card bg-slate-950/50 border border-slate-800 rounded-xl p-6 flex flex-col items-center justify-center gap-4 cursor-default hover:border-cyan-500/50 transition-all duration-300 group">
+            <skill.icon className="text-4xl text-slate-400 group-hover:text-cyan-400 transition-all duration-300 group-hover:scale-110" />
+            <span className="text-slate-400 text-sm font-semibold group-hover:text-cyan-400 transition-colors">
                 {skill.name}
             </span>
         </div>
@@ -42,12 +42,14 @@ function SkillCard({ skill }) {
 
 export default function TechStack() {
     return (
-        <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
             <div className="max-w-6xl mx-auto">
-                <h2 className="section-title">Tech Stack</h2>
-                <p className="text-slate-400 text-center mb-12">
-                    Core technologies I use to build applications
-                </p>
+                <div className="text-center mb-16">
+                    <h2 className="section-title mb-4">Tech Stack</h2>
+                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                        Technologies and tools I use to build modern, scalable applications
+                    </p>
+                </div>
 
                 {/* Core Skills */}
                 <div className="mb-10">

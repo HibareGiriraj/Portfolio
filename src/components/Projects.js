@@ -6,13 +6,14 @@ export default function Projects() {
     const projects = getPublishedProjects();
 
     return (
-        <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-                {/* Renamed to show ownership */}
-                <h2 className="section-title">Production Case Study</h2>
-                <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-                    Real work I've shipped and maintained in production environments.
-                </p>
+        <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="section-title mb-4">Latest Projects</h2>
+                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                        Production systems I've built and maintained
+                    </p>
+                </div>
 
                 <div className="space-y-8">
                     {projects.map((project) => (
@@ -22,62 +23,39 @@ export default function Projects() {
                         >
                             <div className="grid md:grid-cols-3 gap-0">
                                 {/* Image */}
-                                <div className="relative overflow-hidden h-64 md:h-auto img-zoom">
+                                <div className="relative overflow-hidden h-48 sm:h-64 md:h-auto img-zoom">
                                     <img
                                         src={project.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop"}
-                                        alt={project.title}
+                                        alt={`${project.title} - ${project.description || 'Project screenshot'}`}
                                         className="w-full h-full object-cover"
+                                        loading="lazy"
+                                        width={800}
+                                        height={500}
                                     />
                                 </div>
 
                                 {/* Content - Case Study Format */}
-                                <div className="md:col-span-2 p-8">
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <span className="tag mb-2 inline-block">Production Work</span>
-                                            <h3 className="text-2xl font-bold text-white">
-                                                {project.title}
-                                            </h3>
-                                        </div>
-                                        <div className="flex gap-3">
-                                            {project.githubUrl && (
-                                                <a
-                                                    href={project.githubUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="social-icon"
-                                                >
-                                                    <FaGithub size={18} />
-                                                </a>
-                                            )}
-                                            {project.liveUrl && project.liveUrl !== '#' && (
-                                                <a
-                                                    href={project.liveUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="social-icon"
-                                                >
-                                                    <FaExternalLinkAlt size={16} />
-                                                </a>
-                                            )}
-                                        </div>
+                                <div className="md:col-span-2 p-6 md:p-8">
+                                    <div className="mb-4">
+                                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                                            {project.title}
+                                        </h3>
                                     </div>
 
-                                    {/* Problem/Solution Format */}
-                                    <div className="space-y-4 mb-6">
-                                        <div>
-                                            <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-1">The Problem</h4>
-                                            <p className="text-slate-400 text-sm">
-                                                {project.description}
-                                            </p>
-                                        </div>
-                                        {project.longDescription && (
-                                            <div>
-                                                <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-1">My Approach</h4>
-                                                <p className="text-slate-400 text-sm">
-                                                    {project.longDescription}
-                                                </p>
-                                            </div>
+                                    {/* Description */}
+                                    <div className="mb-6">
+                                        <p className="text-slate-300 text-base leading-relaxed mb-4">
+                                            {project.description}
+                                        </p>
+                                        {project.impact && project.impact.length > 0 && (
+                                            <ul className="space-y-2">
+                                                {project.impact.map((metric, idx) => (
+                                                    <li key={idx} className="text-slate-400 text-sm flex items-start gap-2">
+                                                        <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                                        <span>{metric}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         )}
                                     </div>
 
@@ -95,11 +73,52 @@ export default function Projects() {
                                         <div className="flex flex-wrap gap-3 text-sm text-slate-500">
                                             {project.features.map((feature, i) => (
                                                 <span key={i} className="flex items-center gap-1">
-                                                    <span className="text-cyan-400">✓</span> {feature}
+                                                    <span className="text-cyan-400" aria-hidden="true">✓</span> {feature}
                                                 </span>
                                             ))}
                                         </div>
                                     )}
+
+                                    {/* Clear CTAs */}
+                                    <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-6">
+                                        {project.githubUrl && project.githubUrl !== '#' && (
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="btn-secondary text-sm min-h-[44px] px-4"
+                                                aria-label={`View ${project.title} source code`}
+                                            >
+                                                <FaGithub aria-hidden="true" />
+                                                <span className="hidden sm:inline">View Code</span>
+                                                <span className="sm:hidden">Code</span>
+                                            </a>
+                                        )}
+                                        {project.liveUrl && project.liveUrl !== '#' && (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="btn-primary text-sm min-h-[44px] px-4"
+                                                aria-label={`View ${project.title} live demo`}
+                                            >
+                                                <FaExternalLinkAlt aria-hidden="true" />
+                                                <span className="hidden sm:inline">Live Demo</span>
+                                                <span className="sm:hidden">Demo</span>
+                                            </a>
+                                        )}
+                                        {project.slug && (
+                                            <Link
+                                                href={`/projects/${project.slug}`}
+                                                className="btn-secondary text-sm min-h-[44px] px-4"
+                                                aria-label={`Read case study for ${project.title}`}
+                                            >
+                                                <span className="hidden sm:inline">Case Study</span>
+                                                <span className="sm:hidden">Details</span>
+                                                <span aria-hidden="true"> →</span>
+                                            </Link>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </article>

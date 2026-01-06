@@ -3,15 +3,14 @@
 A modern, responsive portfolio website built with Next.js 16, featuring a stunning dark theme with glassmorphism effects, animations, and a complete admin dashboard.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=flat-square&logo=mongodb)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=flat-square&logo=tailwind-css)
 
 ## ✨ Features
 
 - **Modern UI/UX** - Dark theme with gradient accents, glassmorphism, and smooth animations
 - **Responsive Design** - Optimized for all screen sizes
-- **Dynamic Projects** - MongoDB-powered project showcase with CRUD operations
-- **Contact Form** - Functional contact form with database storage
+- **Dynamic Projects** - JSON file-based project showcase with CRUD operations
+- **Contact Form** - Functional contact form with JSON file storage
 - **Admin Dashboard** - Secure admin panel to manage projects and view messages
 - **SEO Optimized** - Full SEO setup with sitemap, robots.txt, and Open Graph tags
 - **Authentication** - NextAuth.js protected admin routes
@@ -19,7 +18,7 @@ A modern, responsive portfolio website built with Next.js 16, featuring a stunni
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 16 (App Router)
-- **Database:** MongoDB with Mongoose
+- **Data Storage:** JSON files (projects.json, contacts.json)
 - **Styling:** Tailwind CSS v4
 - **Authentication:** NextAuth.js
 - **Animations:** Framer Motion
@@ -29,7 +28,6 @@ A modern, responsive portfolio website built with Next.js 16, featuring a stunni
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB database (local or Atlas)
 
 ### Installation
 
@@ -51,11 +49,11 @@ A modern, responsive portfolio website built with Next.js 16, featuring a stunni
    
    Edit `.env` with your values:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
    NEXTAUTH_URL=http://localhost:3000
    NEXTAUTH_SECRET=your_secret_key
    ADMIN_USER=admin
    ADMIN_PASSWORD=your_secure_password
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
    ```
 
 4. **Run the development server**
@@ -95,10 +93,11 @@ portfolio/
 │   │   ├── ProjectsManager.js  # Admin projects CRUD
 │   │   └── TechStack.js        # Skills section
 │   ├── lib/
-│   │   └── mongodb.js          # Database connection
-│   └── models/
-│       ├── Contact.js          # Contact form model
-│       └── Project.js          # Project model
+│   │   ├── contacts.ts         # Contact form data management
+│   │   └── projects.ts         # Projects data management
+│   └── data/
+│       ├── contacts.json       # Contact messages storage
+│       └── projects.json       # Projects data storage
 ```
 
 ## 🔐 Admin Access
@@ -148,7 +147,6 @@ npm start
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `MONGODB_URI` | MongoDB connection string | ✅ |
 | `NEXTAUTH_URL` | Your site URL | ✅ |
 | `NEXTAUTH_SECRET` | Auth secret key | ✅ |
 | `ADMIN_USER` | Admin username | ✅ |

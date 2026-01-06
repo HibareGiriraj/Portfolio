@@ -6,7 +6,16 @@ export async function POST(request) {
     try {
         const body = await request.json();
 
-        const { name, email, subject, message } = body;
+        const { name, email, subject, message, website } = body;
+
+        // Honeypot spam protection - if website field is filled, it's a bot
+        if (website && website.trim() !== '') {
+            // Silently reject without error to avoid revealing the honeypot
+            return Response.json(
+                { success: true, message: 'Thank you for your message! I will get back to you soon.' },
+                { status: 200 }
+            );
+        }
 
         // Validate required fields
         if (!name || !email || !message) {
@@ -23,6 +32,23 @@ export async function POST(request) {
                 { error: 'Please provide a valid email address' },
                 { status: 400 }
             );
+        }
+
+        // Basic spam detection - check for common spam patterns
+        const spamPatterns = [
+            /http[s]?:\/\//i,
+            /www\./i,
+            /\[url\]/i,
+            /<a\s+href/i,
+        ];
+        
+        const messageLower = message.toLowerCase();
+        const hasSpamLinks = spamPatterns.some(pattern => pattern.test(message));
+        
+        // If message contains suspicious links, log for review but don't block
+        // You can enhance this with more sophisticated spam detection (e.g., reCAPTCHA)
+        if (hasSpamLinks) {
+            console.log('Potential spam detected in contact form:', { email, subject });
         }
 
         // Save to JSON file

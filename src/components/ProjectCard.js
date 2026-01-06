@@ -7,8 +7,11 @@ export default function ProjectCard({ project }) {
             <div className="relative overflow-hidden h-48">
                 <img
                     src={project.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400"}
-                    alt={project.title}
+                    alt={`${project.title} - ${project.description || 'Project screenshot'}`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width={400}
+                    height={192}
                 />
 
                 {/* Links Overlay */}
@@ -18,9 +21,10 @@ export default function ProjectCard({ project }) {
                             href={project.githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-10 h-10 rounded-md bg-white flex items-center justify-center text-black hover:bg-slate-200 transition-colors"
+                            aria-label={`View ${project.title} source code on GitHub`}
+                            className="w-11 h-11 rounded-md bg-white flex items-center justify-center text-black hover:bg-slate-200 transition-colors min-h-[44px] min-w-[44px]"
                         >
-                            <FaGithub size={18} />
+                            <FaGithub size={18} aria-hidden="true" />
                         </a>
                     )}
                     {project.liveLink && (
@@ -28,9 +32,10 @@ export default function ProjectCard({ project }) {
                             href={project.liveLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-10 h-10 rounded-md bg-white flex items-center justify-center text-black hover:bg-slate-200 transition-colors"
+                            aria-label={`View ${project.title} live demo`}
+                            className="w-11 h-11 rounded-md bg-white flex items-center justify-center text-black hover:bg-slate-200 transition-colors min-h-[44px] min-w-[44px]"
                         >
-                            <FaExternalLinkAlt size={16} />
+                            <FaExternalLinkAlt size={16} aria-hidden="true" />
                         </a>
                     )}
                 </div>

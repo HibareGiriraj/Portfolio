@@ -6,22 +6,24 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800/50">
             <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
                     {/* Left */}
-                    <div>
-                        <p className="gradient-text font-bold text-lg">
-                            Giriraj Hibare
-                        </p>
-                        <p className="text-slate-500 text-sm">
-                            © {currentYear} All rights reserved.
+                    <div className="flex items-center gap-3">
+                        <img 
+                            src="/giriraj_logo.png" 
+                            alt="Giriraj Hibare Logo" 
+                            className="h-6 w-auto opacity-80"
+                        />
+                        <p className="text-slate-400 text-sm">
+                            © {currentYear} Giriraj Hibare
                         </p>
                     </div>
 
                     {/* Center */}
-                    <p className="text-slate-400 text-sm">
-                        Full-Stack MERN Developer | Pune, Maharashtra
+                    <p className="text-slate-500 text-sm">
+                        Based in Pune, Maharashtra, India
                     </p>
 
                     {/* Right - Social Links */}
@@ -30,19 +32,20 @@ export default function Footer() {
                             href="https://github.com/HibareGiriraj"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="GitHub Profile"
-                            className="social-icon"
+                            aria-label="Visit my GitHub profile"
+                            className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                         >
-                            <FaGithub size={16} />
+                            GitHub
                         </a>
+                        <span className="text-slate-600">•</span>
                         <a
                             href="https://linkedin.com/in/girirajhibare"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="LinkedIn Profile"
-                            className="social-icon"
+                            aria-label="Visit my LinkedIn profile"
+                            className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                         >
-                            <FaLinkedin size={16} />
+                            LinkedIn
                         </a>
                     </div>
                 </div>
