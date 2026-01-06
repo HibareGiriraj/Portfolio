@@ -14,10 +14,10 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
  * @returns {Promise<Object>} Email send result
  */
 export async function sendContactEmail({ name, email, subject, message }) {
-    // Check if Resend is configured
+    // If Resend is not configured, skip email but don't break the API
     if (!resend) {
         console.warn('Resend API key not configured. Email will not be sent.');
-        throw new Error('Email service not configured. Please set RESEND_API_KEY environment variable.');
+        return { success: false, skipped: true, reason: 'Email service not configured' };
     }
 
     try {

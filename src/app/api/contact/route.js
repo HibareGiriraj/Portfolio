@@ -54,31 +54,27 @@ export async function POST(request) {
 
         // Send email notification (primary method for production)
         let emailSent = false;
-        let emailError = null;
         try {
-            await sendContactEmail({
+            const emailResult = await sendContactEmail({
                 name,
                 email,
                 subject: subject || '',
                 message
             });
-            emailSent = true;
-            console.log('✅ Contact email sent successfully to:', process.env.CONTACT_EMAIL || process.env.ADMIN_EMAIL);
+
+            if (emailResult?.success) {
+                emailSent = true;
+                console.log('✅ Contact email sent successfully to:', process.env.CONTACT_EMAIL || process.env.ADMIN_EMAIL);
+            } else {
+                console.warn('⚠️ Contact email not sent:', emailResult?.reason || 'Unknown reason');
+            }
         } catch (emailErr) {
-            emailError = emailErr;
             console.error('❌ Failed to send contact email:', emailErr);
             console.error('Email error details:', {
                 message: emailErr.message,
                 stack: emailErr.stack
             });
-            
-            // If email fails and no API key, return error
-            if (emailErr.message?.includes('not configured') || emailErr.message?.includes('RESEND_API_KEY')) {
-                return Response.json(
-                    { error: 'Email service not configured. Please contact the administrator.' },
-                    { status: 500 }
-                );
-            }
+            // Do NOT fail the whole request if email fails
         }
 
         // Save to MongoDB
@@ -115,14 +111,6 @@ export async function POST(request) {
             savedInDb,
             timestamp: new Date().toISOString()
         });
-
-        // Only return success if email was sent (primary method)
-        if (!emailSent) {
-            return Response.json(
-                { error: 'Failed to send message. Please try again or contact directly via email.' },
-                { status: 500 }
-            );
-        }
 
         return Response.json({
             success: true,
