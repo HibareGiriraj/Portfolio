@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "title": "GiftyGen - Subscription Platform",
+        "title": "GiftyGen - Digital Gift Card Platform",
         "slug": "giftygen",
         "description": "End-to-end subscription management system with Razorpay payment integration handling recurring payments and automated billing for live paying customers.",
         "longDescription": "Built a complete MERN subscription management system with Razorpay payment integration, automated WhatsApp notifications for gift-card delivery, payment confirmations, and expiry alerts. Managed real-time subscription tracking with renewal detection and status indicators.",

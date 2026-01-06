@@ -42,20 +42,32 @@ export default function Projects() {
                                         </h3>
                                     </div>
 
-                                    {/* Description */}
+                                    {/* Description - Bullets Instead of Paragraphs */}
                                     <div className="mb-6">
-                                        <p className="text-slate-300 text-base leading-relaxed mb-4">
-                                            {project.description}
-                                        </p>
+                                        <ul className="space-y-2 mb-4">
+                                            <li className="text-slate-300 text-sm flex items-start gap-2">
+                                                <span className="text-cyan-400 mt-1 font-bold" aria-hidden="true">▸</span>
+                                                <span>{project.description}</span>
+                                            </li>
+                                            {project.longDescription && (
+                                                <li className="text-slate-300 text-sm flex items-start gap-2">
+                                                    <span className="text-cyan-400 mt-1 font-bold" aria-hidden="true">▸</span>
+                                                    <span>{project.longDescription}</span>
+                                                </li>
+                                            )}
+                                        </ul>
                                         {project.impact && project.impact.length > 0 && (
-                                            <ul className="space-y-2">
-                                                {project.impact.map((metric, idx) => (
-                                                    <li key={idx} className="text-slate-400 text-sm flex items-start gap-2">
-                                                        <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
-                                                        <span>{metric}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <div className="border-t border-slate-700 pt-4">
+                                                <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">Impact Metrics</h4>
+                                                <ul className="space-y-2">
+                                                    {project.impact.map((metric, idx) => (
+                                                        <li key={idx} className="text-slate-300 text-sm flex items-start gap-2">
+                                                            <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                                            <span><strong className="text-white">{metric.split(':')[0]}</strong>{metric.includes(':') ? ': ' + metric.split(':').slice(1).join(':') : ''}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         )}
                                     </div>
 
@@ -68,14 +80,18 @@ export default function Projects() {
                                         ))}
                                     </div>
 
-                                    {/* Features as Impact */}
+                                    {/* Features as Bullets */}
                                     {project.features && project.features.length > 0 && (
-                                        <div className="flex flex-wrap gap-3 text-sm text-slate-500">
-                                            {project.features.map((feature, i) => (
-                                                <span key={i} className="flex items-center gap-1">
-                                                    <span className="text-cyan-400" aria-hidden="true">✓</span> {feature}
-                                                </span>
-                                            ))}
+                                        <div className="border-t border-slate-700 pt-4 mb-4">
+                                            <h4 className="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">Key Features</h4>
+                                            <ul className="space-y-1.5">
+                                                {project.features.map((feature, i) => (
+                                                    <li key={i} className="text-slate-400 text-sm flex items-start gap-2">
+                                                        <span className="text-cyan-400 mt-1" aria-hidden="true">▸</span>
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                     )}
 

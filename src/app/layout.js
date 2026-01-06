@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://girirajhibare.dev'),
   title: {
-    default: "Giriraj Hibare | MERN Stack Developer",
+    default: "Giriraj Hibare | Full-Stack Developer (MERN Stack)",
     template: "%s | Giriraj Hibare"
   },
   description: "Full Stack Developer specializing in React, Next.js, Node.js, and MongoDB. Building beautiful, scalable, and performant web applications. Available for freelance and full-time opportunities.",
@@ -86,10 +86,13 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/giriraj_logo.png', type: 'image/png' },
+      { url: '/giriraj_logo.png', type: 'image/png', sizes: '32x32' },
+      { url: '/giriraj_logo.png', type: 'image/png', sizes: '16x16' },
     ],
     shortcut: '/giriraj_logo.png',
-    apple: '/giriraj_logo.png',
+    apple: [
+      { url: '/giriraj_logo.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
