@@ -51,12 +51,20 @@ export async function POST(request) {
             console.log('Potential spam detected in contact form:', { email, subject });
         }
 
-        // Save to JSON file
+        // Save to JSON file (may not work in serverless production)
         const contact = addContact({
             name,
             email,
             subject: subject || '',
             message
+        });
+
+        // Log contact for debugging (in production, check server logs)
+        console.log('Contact form submission:', {
+            name: contact.name,
+            email: contact.email,
+            subject: contact.subject,
+            timestamp: contact.createdAt
         });
 
         return Response.json({
@@ -66,6 +74,11 @@ export async function POST(request) {
         });
     } catch (error) {
         console.error('Contact form error:', error);
+        console.error('Error details:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+        });
         return Response.json(
             { error: 'Failed to submit contact form. Please try again.' },
             { status: 500 }
