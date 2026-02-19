@@ -75,11 +75,7 @@ export async function addContact(
     };
   } catch (error) {
     console.error('Error adding contact to MongoDB:', error);
-    // Fallback: return contact with a generated id so the API still responds
-    return {
-      ...newContact,
-      id: new ObjectId().toString(),
-    };
+    throw new Error('Failed to save contact');
   }
 }
 

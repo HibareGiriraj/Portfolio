@@ -52,7 +52,32 @@ export async function POST(request) {
             console.log('Potential spam detected in contact form:', { email, subject });
         }
 
-        // Send email notification (primary method for production)
+        // STEP 1: Save to MongoDB - MANDATORY (this is the source of truth)
+        // If this fails, the API must fail - no data loss allowed
+        let contact = null;
+        try {
+            contact = await addContact({
+                name,
+                email,
+                subject: subject || '',
+                message
+            });
+            console.log('✅ Contact saved to MongoDB');
+        } catch (dbError) {
+            console.error('❌ Failed to save contact to MongoDB:', dbError);
+            console.error('Database error details:', {
+                message: dbError.message,
+                stack: dbError.stack
+            });
+            // If MongoDB fails, the API must fail - no data loss allowed
+            return Response.json(
+                { error: 'Failed to save your message. Please try again or contact directly via email.' },
+                { status: 500 }
+            );
+        }
+
+        // STEP 2: Send email notification - OPTIONAL (just a notification)
+        // If email fails, we still return success because data is already saved
         let emailSent = false;
         try {
             const emailResult = await sendContactEmail({
@@ -74,24 +99,7 @@ export async function POST(request) {
                 message: emailErr.message,
                 stack: emailErr.stack
             });
-            // Do NOT fail the whole request if email fails
-        }
-
-        // Save to MongoDB
-        let contact = null;
-        let savedInDb = false;
-        try {
-            contact = await addContact({
-                name,
-                email,
-                subject: subject || '',
-                message
-            });
-            savedInDb = true;
-            console.log('✅ Contact saved to MongoDB');
-        } catch (dbError) {
-            console.warn('⚠️ Could not save contact to MongoDB:', dbError.message);
-            // We already sent email, so this is non-fatal
+            // Email is optional - don't fail the request if it doesn't send
         }
 
         // Send auto-reply to sender (optional, don't fail if this errors)
@@ -108,14 +116,14 @@ export async function POST(request) {
             email,
             subject: subject || '',
             emailSent,
-            savedInDb,
+            savedInDb: true,
             timestamp: new Date().toISOString()
         });
 
         return Response.json({
             success: true,
             message: 'Thank you for your message! I will get back to you soon.',
-            data: contact || { name, email, subject: subject || '', message }
+            data: contact
         });
     } catch (error) {
         console.error('Contact form error:', error);

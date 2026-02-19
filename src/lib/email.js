@@ -1,8 +1,28 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-// Initialize Resend with API key from environment variables
-// Only initialize if API key is provided
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+// Create Nodemailer transporter for Outlook
+const createTransporter = () => {
+    const user = process.env.OUTLOOK_EMAIL;
+    const pass = process.env.OUTLOOK_PASSWORD;
+
+    if (!user || !pass) {
+        return null;
+    }
+
+    return nodemailer.createTransport({
+        host: 'smtp-mail.outlook.com',
+        port: 587,
+        secure: false, // TLS
+        auth: {
+            user: user,
+            pass: pass,
+        },
+        tls: {
+            ciphers: 'SSLv3',
+            rejectUnauthorized: false
+        }
+    });
+};
 
 /**
  * Send contact form email notification
@@ -14,24 +34,25 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
  * @returns {Promise<Object>} Email send result
  */
 export async function sendContactEmail({ name, email, subject, message }) {
-    // If Resend is not configured, skip email but don't break the API
-    if (!resend) {
-        console.warn('Resend API key not configured. Email will not be sent.');
+    const transporter = createTransporter();
+
+    // If Outlook is not configured, skip email but don't break the API
+    if (!transporter) {
+        console.warn('Outlook email not configured. Email will not be sent.');
         return { success: false, skipped: true, reason: 'Email service not configured' };
     }
 
     try {
         // Get recipient email from environment or use default
-        const recipientEmail = process.env.CONTACT_EMAIL || process.env.ADMIN_EMAIL || 'girirajhibare@outlook.com';
-        const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'; // Default Resend email for testing
-        
-        const emailSubject = subject 
-            ? `Portfolio Contact: ${subject}` 
+        const recipientEmail = process.env.OUTLOOK_EMAIL || 'girirajhibare@outlook.com';
+
+        const emailSubject = subject
+            ? `Portfolio Contact: ${subject}`
             : `Portfolio Contact from ${name}`;
 
-        const { data, error } = await resend.emails.send({
-            from: `Portfolio Contact <${fromEmail}>`,
-            to: [recipientEmail],
+        const mailOptions = {
+            from: process.env.OUTLOOK_EMAIL,
+            to: recipientEmail,
             replyTo: email,
             subject: emailSubject,
             html: `
@@ -95,14 +116,11 @@ ${message}
 This email was sent from your portfolio contact form.
 Reply directly to this email to respond to ${name}.
             `.trim(),
-        });
+        };
 
-        if (error) {
-            console.error('Resend API error:', error);
-            throw new Error(`Failed to send email: ${error.message}`);
-        }
-
-        return { success: true, data };
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent:', info.messageId);
+        return { success: true, data: info };
     } catch (error) {
         console.error('Error sending contact email:', error);
         throw error;
@@ -115,18 +133,18 @@ Reply directly to this email to respond to ${name}.
  * @returns {Promise<Object>} Email send result
  */
 export async function sendAutoReply({ name, email }) {
-    // Check if Resend is configured
-    if (!resend) {
-        console.warn('Resend API key not configured. Auto-reply will not be sent.');
+    const transporter = createTransporter();
+
+    // Check if Outlook is configured
+    if (!transporter) {
+        console.warn('Outlook email not configured. Auto-reply will not be sent.');
         return { success: false, error: 'Email service not configured' };
     }
 
     try {
-        const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev';
-        
-        const { data, error } = await resend.emails.send({
-            from: `Giriraj Hibare <${fromEmail}>`,
-            to: [email],
+        const mailOptions = {
+            from: process.env.OUTLOOK_EMAIL,
+            to: email,
             subject: 'Thank you for reaching out!',
             html: `
                 <!DOCTYPE html>
@@ -173,18 +191,16 @@ Full-Stack Developer
 ---
 This is an automated confirmation email.
             `.trim(),
-        });
+        };
 
-        if (error) {
-            console.error('Resend auto-reply error:', error);
-            // Don't throw - auto-reply failure shouldn't break the form
-        }
-
-        return { success: true, data };
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Auto-reply sent:', info.messageId);
+        return { success: true, data: info };
     } catch (error) {
         console.error('Error sending auto-reply:', error);
         // Don't throw - auto-reply failure shouldn't break the form
         return { success: false, error };
     }
 }
+
 

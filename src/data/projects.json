@@ -5,6 +5,8 @@
         "slug": "giftygen",
         "description": "End-to-end subscription management system with Razorpay payment integration handling recurring payments and automated billing for live paying customers.",
         "longDescription": "Built a complete MERN subscription management system with Razorpay payment integration, automated WhatsApp notifications for gift-card delivery, payment confirmations, and expiry alerts. Managed real-time subscription tracking with renewal detection and status indicators.",
+        "company": "Aii Venture Pvt. Ltd.",
+        "isLiveProduct": true,
         "stack": [
             "React",
             "Node.js",
@@ -25,17 +27,15 @@
             "Handling live recurring payments and billing"
         ],
         "image": "/projects/giftygen_logo.png",
-        "githubUrl": "https://github.com/HibareGiriraj",
-        "liveUrl": "",
+        "githubUrl": "",
+        "liveUrl": "https://giftygen.com",
         "published": true,
         "techStack": [
             "MongoDB",
             "React",
             "Express",
             "Nodejs"
-        ],
-        "githubLink": "#",
-        "liveLink": "#"
+        ]
     },
     {
         "id": "2",
@@ -43,6 +43,8 @@
         "slug": "studieshq",
         "description": "Enhanced mobile responsiveness across 15+ pages of educational platform, achieving consistent cross-device experience and reducing layout bugs by 80%.",
         "longDescription": "Improved mobile responsiveness across multiple pages, implemented breakpoints and media queries for consistent cross-device performance. Enhanced UI stability and accessibility with layout adjustments aligned to design standards.",
+        "company": "StudiesHQ (Production Platform)",
+        "isLiveProduct": true,
         "stack": [
             "React",
             "Node.js",

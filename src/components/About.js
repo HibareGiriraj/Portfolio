@@ -2,43 +2,43 @@
 
 export default function About() {
     return (
-        <section id="about-me" className="py-24 px-4 sm:px-6 lg:px-8">
+        <section id="about-me" className="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8 sm:mb-16">
                     <h2 className="section-title mb-4">About</h2>
-                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
                         Giriraj Hibare
                     </p>
                 </div>
 
-                <div className="glass-card p-8 md:p-12 rounded-2xl">
+                <div className="glass-card p-5 sm:p-8 md:p-12 rounded-2xl">
                     {/* Profile Header */}
-                    <div className="text-center mb-10">
+                    <div className="text-center mb-6 sm:mb-10">
                         <div className="inline-block mb-6">
-                            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mx-auto flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-lg shadow-cyan-500/20">
+                            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mx-auto flex items-center justify-center text-white text-3xl sm:text-4xl md:text-5xl font-bold shadow-lg shadow-cyan-500/20">
                                 GH
                             </div>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Giriraj Hibare</h3>
-                        <p className="text-lg text-slate-400">Full-Stack Engineer (MERN Stack)</p>
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Giriraj Hibare</h3>
+                        <p className="text-sm sm:text-lg text-slate-400">Full-Stack Engineer (MERN Stack)</p>
                     </div>
 
                     {/* Bold Outcomes First */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">500+</div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+                        <div className="text-center p-3 sm:p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-400 mb-1">500+</div>
                             <div className="text-xs text-slate-400">Active Users</div>
                         </div>
-                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">20+</div>
+                        <div className="text-center p-3 sm:p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-400 mb-1">20+</div>
                             <div className="text-xs text-slate-400">Bugs Fixed</div>
                         </div>
-                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">2+</div>
+                        <div className="text-center p-3 sm:p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-400 mb-1">2+</div>
                             <div className="text-xs text-slate-400">Production Apps</div>
                         </div>
-                        <div className="text-center p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">0</div>
+                        <div className="text-center p-3 sm:p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-400 mb-1">0</div>
                             <div className="text-xs text-slate-400">Critical Incidents</div>
                         </div>
                     </div>

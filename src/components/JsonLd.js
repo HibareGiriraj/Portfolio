@@ -2,11 +2,12 @@
 export function PersonSchema() {
     const schema = {
         "@context": "https://schema.org",
-        "@type": "Person",
+        "@type": ["Person", "ProfilePage"],
         name: "Giriraj Hibare",
         url: "https://girirajhibare.dev",
         image: "https://girirajhibare.dev/og-image.png",
         jobTitle: "Full-Stack MERN Developer",
+        description: "Full Stack Developer specializing in React, Next.js, Node.js, and MongoDB. Building scalable production applications.",
         worksFor: {
             "@type": "Organization",
             name: "Aii Venture Pvt. Ltd."
@@ -32,6 +33,10 @@ export function PersonSchema() {
             addressLocality: "Pune",
             addressRegion: "Maharashtra",
             addressCountry: "India"
+        },
+        alumniOf: {
+            "@type": "Organization",
+            name: "Aii Venture Pvt. Ltd."
         }
     };
 
@@ -48,7 +53,7 @@ export function WebsiteSchema() {
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: "Giriraj Hibare Portfolio",
-        url: "https://girirajhibare.com",
+        url: "https://girirajhibare.dev",
         description: "Full-Stack MERN Developer portfolio showcasing production-ready web applications",
         author: {
             "@type": "Person",
