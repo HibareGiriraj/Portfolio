@@ -10,7 +10,7 @@ export function PersonSchema() {
         description: "Full Stack Developer specializing in React, Next.js, Node.js, and MongoDB. Building scalable production applications.",
         worksFor: {
             "@type": "Organization",
-            name: "Aii Venture Pvt. Ltd."
+            name: "AiiVenture Solutions Pvt Ltd"
         },
         sameAs: [
             "https://github.com/HibareGiriraj",
@@ -36,7 +36,7 @@ export function PersonSchema() {
         },
         alumniOf: {
             "@type": "Organization",
-            name: "Aii Venture Pvt. Ltd."
+            name: "AiiVenture Solutions Pvt Ltd"
         }
     };
 

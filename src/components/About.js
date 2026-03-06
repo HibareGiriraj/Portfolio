@@ -68,7 +68,7 @@ export default function About() {
                             <li className="flex items-start gap-3">
                                 <span className="text-cyan-400 mt-1 font-bold text-lg" aria-hidden="true">▸</span>
                                 <div>
-                                    Currently at <span className="text-cyan-400 font-medium">Aii Venture Pvt. Ltd.</span> building subscription management systems
+                                    Currently at <span className="text-cyan-400 font-medium">AiiVenture Solutions Pvt Ltd</span> building subscription management systems
                                 </div>
                             </li>
                         </ul>

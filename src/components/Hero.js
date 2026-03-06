@@ -37,7 +37,7 @@ export default function Hero() {
 
             <div className="text-center w-full max-w-4xl mx-auto relative z-10 pt-20 md:pt-24">
                 {/* Hero - Name & Title */}
-                <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12 animate-fade-in-up">
+                <div className="space-y-5 sm:space-y-6 mb-8 sm:mb-12 animate-fade-in-up">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight relative min-h-[1.2em]">
                         <span className="gradient-text absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap animate-name-fade">Giriraj Hibare</span>
                         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full animate-title-fade">

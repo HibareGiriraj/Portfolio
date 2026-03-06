@@ -3,7 +3,7 @@ import { HiBriefcase, HiLocationMarker, HiArrowRight } from 'react-icons/hi';
 
 const experience = [
     {
-        company: "Aii Venture Pvt. Ltd.",
+        company: "AiiVenture Solutions Pvt Ltd",
         role: "Full-Stack Developer",
         period: "Aug 2024 – Present",
         location: "Pune",
